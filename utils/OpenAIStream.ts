@@ -27,7 +27,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
   const decoder = new TextDecoder();
 
   let counter = 0;
-
+  console.log('fatch payload', payload);
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
@@ -36,6 +36,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
     method: "POST",
     body: JSON.stringify(payload),
   });
+  console.log('fatch res', res)
 
   const stream = new ReadableStream({
     async start(controller) {
